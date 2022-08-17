@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Movie I</title>
+    <style>
+ .j{
+    height: 500px;
+    width: 25%;
+    margin-left: 35%;
+    margin-top: 5%;
+    padding-left: 3%;
+    padding-top: 1%;
+    background-color: rgb(226, 115, 75);
+    border-color: rgb(92, 142, 142) 10px solid;
+    border-radius: 10%;
+    box-shadow: rgba(0, 0, 0, 0.25) 0px 54px 55px, rgba(0, 0, 0, 0.12) 0px -12px 30px, rgba(0, 0, 0, 0.12) 0px 4px 6px, rgba(0, 0, 0, 0.17) 0px 12px 13px, rgba(0, 0, 0, 0.09) 0px -3px 5px;
+
+}
+h1{
+    font-weight: 500;
+    font-size: 65px;
+    text-decoration: underline;
+}
+body{
+    background-color: rgb(238, 171, 147);
+}
+input{
+    height: 40px;
+    width: 70%;
+    
+}
+#submit{
+    margin: 10px;
+    font-weight: 600;
+    height: 30px;
+    width: 70%;
+    background-color: rgb(238, 171, 147); 
+}
+p{
+    font-size: 28px;
+
+}
+p > a{
+ text-decoration: none;
+ font-size: 35px;
+}
+p>a:hover{
+    color: rgb(58, 3, 58);
+}
+
+.nav{
+            height: 103px;
+            width: 100%;
+            display: flex;
+            justify-content:right;
+            background-color: rgb(182, 22, 22);;
+        }
+        .nav p{
+            font-size: 35px;
+            padding-left: 30px;
+            margin-left: 20px;
+        }
+    </style>
+</head>
+<body>
+    <div class="nav">
+
+        <p><a style="cursor: pointer;text-decoration: none; color: black;font-weight: bold;" href="index.html">Home</a></p>
+        <p><a style="text-decoration: none;background-color:black;color: white;" href="login.html">Login</a></p>
+        <p><a style="text-decoration: none;background-color:black;color: white;" href="sign.html">Sign Up</a></p>
+    </div>
+
+
+    <div class="j">
+    <h1>Login</h1>
+    <form>
+        <input type="email" id="email" placeholder="Enter Email">
+        <input type="password" id="password" placeholder="Enter Password">
+        <input type="submit" id="submit" value="Login">
+    </form>
+    <p>New user?<a href="sign.html">Register</a> </p>
+</div>
+</body>
+<script>
+    var sanjana=false
+
+    document.querySelector('form').addEventListener('submit',logfn);
+    function logfn(){
+    var regisUs = JSON.parse(localStorage.getItem('usdata'));
+    if(regisUs==null){
+        alert('not found')
+        window.location.reload()
+        return
+    }
+    event.preventDefault();
+    var givemail = document.querySelector('#email').value;
+    var givpass = document.querySelector('#password').value;
+
+   regisUs.forEach((usdata,index) => {
+       if(usdata.email===givemail && usdata.password===givpass){
+           alert('Login Successful');
+           var a = [index]
+           localStorage.setItem('a',JSON.stringify(a))
+           sanjana=true
+           window.location.href = 'index2.html';
+       }
+      
+   });
+   if(sanjana==false){
+       alert("invalid credentials")
+   }
+
+    }
+</script>
+</html>

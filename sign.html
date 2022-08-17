@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Movie I</title>
+    <style>
+        #j{
+    height: 500px;
+    width: 25%;
+    margin-left: 35%;
+    margin-top: 5%;
+    padding-left: 3%;
+    padding-top: 1%;
+    background-color: rgb(141, 74, 141);
+    border-color: rgb(92, 142, 142) 10px solid;
+    border-radius: 10%;
+    box-shadow: rgba(0, 0, 0, 0.25) 0px 54px 55px, rgba(0, 0, 0, 0.12) 0px -12px 30px, rgba(0, 0, 0, 0.12) 0px 4px 6px, rgba(0, 0, 0, 0.17) 0px 12px 13px, rgba(0, 0, 0, 0.09) 0px -3px 5px;
+
+}
+h1{
+    font-weight: 500;
+    font-size: 60px;
+    text-decoration: underline;
+}
+body{
+    background-color: rgb(216, 148, 216);
+}
+input{
+    height: 40px;
+    width: 70%;
+    
+}
+#submit{
+   margin: 10px;
+    font-weight: 600;
+    height: 30px;
+    width: 70%;
+    background-color: rgb(233, 186, 229); 
+}
+p{
+    font-size: 28px;
+
+}
+p > a{
+ text-decoration: none;
+ font-size: 35px;
+}
+p>a:hover{
+    color: rgb(58, 3, 58);
+}
+
+.nav{
+            height: 103px;
+            width: 100%;
+            display: flex;
+            justify-content:right;
+            background-color: rgb(233, 186, 229);
+        }
+        .nav p{
+            font-size: 35px;
+            padding-left: 30px;
+            margin-left: 20px;
+        }
+    </style>
+</head>
+<body>
+    <div class="nav">
+
+        <p><a style="cursor: pointer;text-decoration: none;" href="index.html">Home</a></p>
+        <p><a href="login.html">Login</a></p>
+        <p><a href="sign.html">Sign Up</a></p>
+    </div>
+
+
+    <div id="j">
+    <h1>Sign In</h1>
+    <form>
+    <input type="text" id="username" placeholder="Enter Your Name" />
+    <input type="email" id="mail" placeholder="Enter Email" /> 
+    <input type="number" id="number" placeholder="Enter Contact Number">
+    <input type="password" id="pass" placeholder="Enter Password" />
+    <input type="submit" id="submit" value="Register" />
+</form>
+<p>Already have an account?<a href="./login.html">Log In</a></p>
+</div>
+</body>
+<script>
+document.querySelector('form').addEventListener('submit',signfrm)
+var usdata;
+if(localStorage.getItem('usdata')===null){
+    usdata = []
+}
+else{
+    usdata = JSON.parse(localStorage.getItem('usdata'));
+}
+function signfrm(){
+    event.preventDefault()
+    var usob = {
+        email: document.querySelector('#mail').value,
+        password: document.querySelector('#pass').value,
+        username: document.querySelector('#username').value,
+        number: document.querySelector('#number').value
+    }
+    if(usob.email=='' || usob.username=='' || usob.password=='' || usob.number==''){
+   alert('Please fill all the required credentials')
+   return
+    }
+    usdata.push(usob);
+    localStorage.setItem('usdata',JSON.stringify(usdata));
+    alert('User signed in succesfully!')
+    window.location.href = 'login.html'
+}
+</script>
+</html>
